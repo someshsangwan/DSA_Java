@@ -1,0 +1,2 @@
+
+    print_normal(head);

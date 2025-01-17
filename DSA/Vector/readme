@@ -1,0 +1,30 @@
+// here we are gonna learn vector in c++ ;
+
+// vector is a data structure to store data , its same as array the only diff is it is dynamic like we dont neeed to specify the size of vectore when we intialize vctor:-
+
+// 1) vector<int>v;
+// 2) vector<int>v={1,2,3,4};
+// 3) vector<int>v(5,0); so it means this is vector of size 5 and all values are zero ;
+// 4) Funciton :-
+
+// 1) size =vector.size();
+// 2) push_back()=v.push_back(2);
+// 3) pop_back()=v.pop_back();
+// 4) v.front()=print first value
+// 5) v.back()= print last value
+// 6) v.at(0) is same as v[0]
+
+// Static vs dynamic :-
+
+// static -> compile time -> int a[5]; array  _> memory stored in stack
+// dynamic -> runtime -> vector -> memory stored in heap 
+
+
+// how to make pair in vector sometime we need to store indices and values:-
+// vector<pair<int,int>>x;
+// x.push_back({2,3});
+// access:-
+// x[0].first  & x[0].second
+
+
+// elfkejfis
