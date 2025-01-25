@@ -21,11 +21,12 @@ Node* remove_duplicate(Node*head){
     }
     map<int,bool>m;
     Node* temp=head;
+    m[temp->data]=1;
     while(temp!=NULL && temp->next!=NULL){
         if(m[temp->next->data]==1){
             temp->next=temp->next->next;
         }else{
-        m[temp->data]=1;
+        m[temp->next->data]=1;
         temp=temp->next;
         }
 
