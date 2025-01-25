@@ -24,7 +24,7 @@ int height(Node* node,int &ans){
         int left=height(node->left,ans);
         int right=height(node->right,ans);
         int ans1=max(left,right)+1;
-        ans=max(ans,left+right+1); // isme hme do node ke bich ka path dekhna h na to root add kr den ge dono lh rh me 
+        ans=max(ans,left+right); // isme hme do node ke bich ka path dekhna h na to root add kr den ge dono lh rh me 
         return ans1; 
     }
     // Function to return the diameter of a Binary Tree.

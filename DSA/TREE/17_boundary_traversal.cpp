@@ -1,3 +1,8 @@
+/*in this question we have to print booundry element of a tree 
+approach--algorithm
+1) first we print left part of a tree exclusive leaf node;   // hello kidz these three part can be asked indivisual in interview ; 
+2) print  leaf node 
+3) print reverse right part of a tree exclusive leaf node */
 #include<bits/stdc++.h>
 using namespace std;
 #include<iostream>
@@ -13,34 +18,55 @@ class Node{
 
     }
 };
-vector<vector<int> >zigzagLevelOrder(Node* A) {
-    vector<vector<int>>res;
-    queue<Node*>q;
-    q.push(A);
-    bool left_to_right=true;
-    while(!q.empty()){
-        int n=q.size();
-        vector<int>t(n);
-        for(int i=0;i<n;i++){
-            Node* temp=q.front();
-            q.pop();
-            int index;
-            if(left_to_right==true){
-                index=i;
-            }
-            else{
-                index=n-i-1;
-            }
-            t[index]=temp->key;
-            if(temp->left){
-                q.push(temp->left);
-            }
-            if(temp->right){
-                q.push(temp->right);
-            }
-        }
-        res.push_back(t);
-        left_to_right=!left_to_right;
+void traversalleft(Node*root,vector<int>&v){
+    if(root==NULL|| root->left==NULL && root->right==NULL){
+        return ;
+
     }
-    return res;
+    v.push_back(root->key);
+    if(root->left){
+        traversalleft(root->left,v);
+    }
+    else{
+        traversalleft(root->right,v);
+    }
+}
+void traversalleaf(Node* root,vector<int>&v){
+    if(root==NULL){
+        return;
+    }
+    if(root->left==NULL && root->right==NULL){
+        v.push_back(root->key);
+    }
+    traversalleaf(root->left,v);
+    traversalleaf(root->right,v);
+}
+
+void traversalright(Node* root,vector<int>&v){
+    if(root==NULL || root->left==NULL && root->right==NULL ){
+        return;
+    }
+    if(root->right){
+        traversalright(root->right,v);
+    }
+    else{
+        traversalright(root->left,v);
+    }
+    v.push_back(root->key); // we need reverse na to hm aate time push krenge ;
+}
+ 
+
+vector<int>boundary(Node *root){
+    vector<int>ans;
+    if(root==NULL){
+        return ans;
+    }
+    ans.push_back(root->key);
+    traversalleft(root->left,ans); // because we already pushed root data so we call from root ->left;
+    traversalleaf(root->left,ans);//leaf node of left subtree;  // we can write them by merge traversalleaf(root->data)
+    traversalleaf(root->right,ans);// leaf node from right subtree;
+    traversalright(root->right,ans);//right boundary node
+    return ans;
+
+
 }
